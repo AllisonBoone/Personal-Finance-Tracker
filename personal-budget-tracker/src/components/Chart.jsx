@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { BudgetContext } from './BudgetContext';
 
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 const Chart = () => {
-  const { transactions } = useContext.map(BudgetContext);
+  const { transactions } = useContext(BudgetContext);
+  const chartRef = useRef(null);
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
@@ -16,7 +20,7 @@ const Chart = () => {
     .reduce((acc, item) => (acc += item), 0);
 
   const data = {
-    labels: ['Income vs Expenses'],
+    labels: ['Income', 'Expenses'],
     datasets: [
       {
         label: 'Income vs Expenses',
@@ -26,7 +30,25 @@ const Chart = () => {
     ],
   };
 
-  return <Pie data={data} />;
+  useEffect(() => {
+    const chartInstance = chartRef.current;
+
+    if (!chartInstance) {
+      return;
+    }
+
+    return () => {
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+    };
+  }, []);
+
+  return (
+    <div>
+      <Pie data={data} ref={chartRef} />
+    </div>
+  );
 };
 
 export default Chart;

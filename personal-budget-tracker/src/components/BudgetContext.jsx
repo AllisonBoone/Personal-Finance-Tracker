@@ -1,7 +1,7 @@
-import React, { createContext, userReducer } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 
 const initialState = {
-  transactions: [],
+  transactions: JSON.parse(localStorage.getItem('transactions')) || [],
 };
 
 export const BudgetContext = createContext(initialState);
@@ -26,7 +26,12 @@ const budgetReducer = (state, action) => {
 };
 
 export const BudgetProvider = ({ children }) => {
-  const [state, dispatch] = userReducer(budgetReducer, initialState);
+  const [state, dispatch] = useReducer(budgetReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('transactions', JSON.stringify(state.transactions));
+  }, [state.transactions]);
+
   return (
     <BudgetContext.Provider
       value={{ transactions: state.transactions, dispatch }}

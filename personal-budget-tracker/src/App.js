@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Header';
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
-import Summary from './components/Summary';
-import Chart from './components/Chart';
+import Header from './components/Header.jsx';
+import Summary from './components/Summary.jsx';
+import TransactionForm from './components/TransactionForm.jsx';
+import TransactionList from './components/TransactionList.jsx';
+import Chart from './components/Chart.jsx';
 import { BudgetProvider } from './components/BudgetContext';
 
 function App() {

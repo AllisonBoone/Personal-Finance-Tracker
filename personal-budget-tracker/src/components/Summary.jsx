@@ -23,7 +23,7 @@ const Summary = () => {
         <p>${income}</p>
       </div>
       <h3>Expenses</h3>
-      <p>${Math.ads(expense)}</p>
+      <p>${Math.abs(expense)}</p>
     </div>
   );
 };
