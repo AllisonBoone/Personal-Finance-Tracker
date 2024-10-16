@@ -22,30 +22,34 @@ const TransactionForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="description">Description</label>
+    <form onSubmit={handleSubmit} className="card p-3">
+      <div className="mb-3">
+        <label htmlFor="description" className="form-label">
+          Description
+        </label>
         <input
           type="text"
           id="description"
           name="description"
+          className="form-control"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="form-control"
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="amount">Amount</label>
+      <div className="mb-3">
+        <label htmlFor="amount" className="form-label">
+          Amount
+        </label>
         <input
           type="number"
           id="amount"
           name="amount"
+          className="form-control"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="form-control"
         />
       </div>
-      <button type="submit" className="btn">
+      <button type="submit" className="btn btn-primary w-100">
         Add Transaction
       </button>
     </form>
