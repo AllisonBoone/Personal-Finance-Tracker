@@ -9,7 +9,7 @@ import { BudgetProvider } from './components/BudgetContext';
 function App() {
   return (
     <BudgetProvider>
-      <div className="container">
+      <div className="container background-light">
         <Header />
         <div className="row mt-4">
           <div className="col-md-6">

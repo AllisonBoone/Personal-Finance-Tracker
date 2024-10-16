@@ -3,7 +3,7 @@ import { BudgetContext } from './BudgetContext';
 
 const TransactionForm = () => {
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState('');
   const { dispatch } = useContext(BudgetContext);
 
   const handleSubmit = (e) => {
