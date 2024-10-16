@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import TransactionForm from './components/TransactionForm';
+import TransactionList from './components/TransactionList';
 import { BudgetProvider } from './components/BudgetContext';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <div className="App">
         <Header />
         <TransactionForm />
+        <TransactionList />
       </div>
     </BudgetProvider>
   );
